@@ -41,7 +41,7 @@ def search_documents_by_metadata(search_query, search_field):
     try:
         # Query DynamoDB with a filter expression
         response = table.scan(
-            FilterExpression=Attr(search_field).contains(search_query)
+            FilterExpression=Attr(search_field).contains(search_query.casefold())
         )
 
         documents = []
@@ -105,7 +105,7 @@ if st.button("Search"):
             for doc in results:
                 st.write(f"**Title**: {doc['title']}")
                 st.write(f"**Tags**: {doc['tags']}")
-                st.write(f"**Uploaded On**: {doc['upload_timestamp']}")
+                st.write(f"**Uploaded On**: {doc['UploadTimestamp']}")
                 st.markdown(f"[View Document]({doc['document_url']})", unsafe_allow_html=True)
                 st.write("---")
         elif isinstance(results, list):

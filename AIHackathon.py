@@ -78,8 +78,8 @@ def upload_to_s3_with_metadata_and_dynamodb(file, bucket_name, file_title, uploa
 st.title("Document Uploader to S3")
 
 # Input widgets
-file_title = st.text_input("Enter File Title", placeholder="e.g., Project Report")
-file_tags = st.text_input("Enter Tags (comma-separated)", placeholder="e.g., ML, AI, Research")
+file_title = st.text_input("Enter File Title", placeholder="e.g., Project Report").lower()
+file_tags = st.text_input("Enter Tags (comma-separated)", placeholder="e.g., ML, AI, Research").lower()
 
 
 # File uploader widget
